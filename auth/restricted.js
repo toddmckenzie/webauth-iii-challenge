@@ -9,6 +9,7 @@ module.exports = (req, res, next) => {
             if (err) {
                 res.status(401).json(err)
             } else {
+                console.log('herhehrehrhe')
                 next();
             }
         })
