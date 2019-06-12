@@ -25,7 +25,7 @@ router.post('/login', (req, res) => {
     let { username, password } = req.body;
 
     db('users')
-    .where({ id })
+    .where({ username })
     .first()
     .then(user => {
         if (user && bcrypt.compareSync(password, user.password)){
@@ -39,6 +39,7 @@ router.post('/login', (req, res) => {
         }
     })
     .catch(error => {
+        console.log(error)
         res.status(500).json(error)
     })
 });
@@ -54,7 +55,7 @@ function generateToken(user){
     }
     const secret = 'Here is my secret to keep secret....';
 
-    return jwt.sign(paylaod, jwt.Secret, options)
+    return jwt.sign(payload, secrets.jwtSecret, options)
 }
 
 
