@@ -7,6 +7,7 @@ router.post('/register', (req,res) => {
     let user = req.body;
     const hash = bcrypt.hashSync(user.password, 8);
     user.password = hash;
+
     db('users')
         .insert(user)
         .then(saved => {
@@ -29,7 +30,7 @@ router.post('/login', (req, res) => {
             const token = generateToken(user);//generates token!!!
             res.status(200).json({ 
                 message: `Welcome ${user.username}`,
-                token
+                token//token sent
             })
         } else {
             res.status(401).json({ message: 'Invalid Credentials.'})
@@ -50,7 +51,7 @@ function generateToken(user){
         expiresIn: '8h',
     }
     const secret = 'Here is my secret to keep secret....';
-    
+
     return jwt.sign(paylaod, secret, options)
 }
 
