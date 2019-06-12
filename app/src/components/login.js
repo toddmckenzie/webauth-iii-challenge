@@ -1,4 +1,5 @@
-import react from 'react';
+import React from 'react';
+import axios from 'axios';
 
 class Login extends React.Component {
     constructor(){
@@ -19,14 +20,17 @@ class Login extends React.Component {
 
     callLogin = (e) => {
         e.preventDefault();
-        axios.post('')
+        axios.post('', this.state)
         .then()
         .catch()
     }   
 
     render() {
         return (
-            
+            <form onSubmit={this.callLogin}>
+                <input value={this.state.name} name='name' placeholder='name' onChange={this.handleChanges} />
+                <input value={this.state.password} name='password' placeholder='password' onChange={this.handleChanges} />
+            </form>
         )
     }
 
