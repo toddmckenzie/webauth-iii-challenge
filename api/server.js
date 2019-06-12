@@ -12,5 +12,7 @@ const authRouter = require('../auth/auth-router.js');
 const userRouter = require('../user/userRouter.js');
 
 
+server.use('/api/auth', authRouter);
+server.use('/api/users', userRouter);
 
 module.exports = server;
