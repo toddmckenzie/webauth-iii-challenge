@@ -23,9 +23,9 @@ class Users extends React.Component {
         // axios.get(endpoint, config) //don;t need config with interceptors
         axios.get(endpoint)
         .then(res => {
-            this.setState({
-                users: res.data
-            })
+            this.setState(() => ({ 
+                users: res.data 
+            }))
         })
         .catch(err => {
             console.log(err.response)
