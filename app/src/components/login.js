@@ -39,13 +39,13 @@ class Login extends React.Component {
         return (
             <div>
                 <Link to='/register'>
-                    <Button>Register</Button>
+                    <Button className='button'>Register</Button>
                 </Link>
                 <h1 className='header'>Please Log In</h1>
                 <form onSubmit={this.callLogin} className='form'>
                     <TextField id='username' label='Name'  className='textField' onChange={this.handleChanges} />
                     <TextField id='password' label='Password' className='textField' onChange={this.handleChanges} type='password' />
-                    <Button onClick={this.callLogin}>Login</Button>
+                    <Button onClick={this.callLogin} className='button'>Login</Button>
                 </form>
             </div>
         )

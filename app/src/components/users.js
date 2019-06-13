@@ -11,13 +11,21 @@ class Users extends React.Component {
     }
 
     componentDidMount() {
-        const endpoint = 'http://localhost:4000/api/users'
-        axios.get(endpoint)
+        const endpoint = 'http://localhost:4000/api/users';
+        const token = localStorage.getItem('jwt');
+        const options = {
+            headers: {
+                authorization: token
+            }
+        }
+        axios.get(endpoint, options)
         .then(res => {
-            console.log(res)
+            this.setState({
+                users: res.data
+            })
         })
         .catch(err => {
-            console.log(err)
+            console.log(err.response)
         })
     }
 
@@ -31,10 +39,10 @@ class Users extends React.Component {
     render() {
         return (
             <div>
-                <Button onClick={this.logout}>Logout</Button>
+                <Button onClick={this.logout} className='button'>Logout</Button>
                 <ul>
                     {this.state.users.map(user => {
-                return <div>
+                return <div key={Math.random()}>
                             <li>{user.username}</li>
                             <li>{user.department}</li>
                         </div>

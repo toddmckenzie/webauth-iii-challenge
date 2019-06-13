@@ -42,13 +42,13 @@ class Register extends React.Component {
         return (
             <div>
                 <Link to='/login'>
-                    <Button>Login</Button>
+                    <Button className='button'>Login</Button>
                 </Link>
                 <form onSubmit={this.register} className='form'>
                     <TextField id='username' label='Name'  className='textField' onChange={this.handleChanges} />
                     <TextField id='password' label='Password' className='textField' onChange={this.handleChanges} type='password'/>
                     <TextField id='department' label='Department' className='textField' onChange={this.handleChanges} />
-                    <Button onClick={this.register}>Register</Button>
+                    <Button onClick={this.register} className='button'>Register</Button>
                 </form>
             </div>
         )
