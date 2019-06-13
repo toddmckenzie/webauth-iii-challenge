@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import './components.css'
 
 class Register extends React.Component {
@@ -25,9 +26,9 @@ class Register extends React.Component {
         })
     }
 
-    callLogin = (e) => {
+    register = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/api/login', this.state)
+        axios.post('http://localhost:5000/api/register', this.state)
         .then(res => {
             console.log(res)
         })
@@ -42,7 +43,7 @@ class Register extends React.Component {
                 <TextField id='username' label='Name'  className='textField' onChange={this.handleChanges} />
                 <TextField id='password' label='Password' className='textField' onChange={this.handleChanges} />
                 <TextField id='department' label='Department' className='textField' onChange={this.handleChanges} />
-                
+                <Button onClick={this.register}>Register</Button>
             </form>
         )
     }
@@ -51,6 +52,3 @@ class Register extends React.Component {
 
 export default Register;
 
-                // <input value={this.state.name} name='name' placeholder='name' onChange={this.handleChanges} />
-                // <input value={this.state.password} name='password' placeholder='password' onChange={this.handleChanges} />
-                // <input value={this.state.department} name='department' placeholder='department' onChange={this.handleChanges} />
