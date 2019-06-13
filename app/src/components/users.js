@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 
-class Register extends React.Component {
+class Users extends React.Component {
     constructor(){
         super();
         this.state = {
