@@ -1,5 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import './components.css'
 
 class Login extends React.Component {
     constructor(){
@@ -14,7 +17,7 @@ class Login extends React.Component {
         e.preventDefault();
         this.setState({
             ...this.state,
-            [e.target.name]: e.target.value
+            [e.target.id]: e.target.value
         })
     }
 
@@ -27,9 +30,10 @@ class Login extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.callLogin}>
-                <input value={this.state.name} name='name' placeholder='name' onChange={this.handleChanges} />
-                <input value={this.state.password} name='password' placeholder='password' onChange={this.handleChanges} />
+            <form onSubmit={this.callLogin} className='form'>
+                <TextField id='username' label='Name'  className='textField' onChange={this.handleChanges} />
+                <TextField id='password' label='Password' className='textField' onChange={this.handleChanges} />
+                <Button onClick={this.callLogin}>Login</Button>
             </form>
         )
     }
