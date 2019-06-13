@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 
+import requiresAuth from './requiresAuth';
+
 class Users extends React.Component {
     constructor(props){
         super(props);
@@ -12,13 +14,14 @@ class Users extends React.Component {
 
     componentDidMount() {
         const endpoint = 'http://localhost:4000/api/users';
-        const token = localStorage.getItem('jwt');
-        const options = {
-            headers: {
-                authorization: token
-            }
-        }
-        axios.get(endpoint, options)
+        // const token = localStorage.getItem('jwt');
+        // const options = {
+        //     headers: {
+        //         authorization: token
+        //     }
+        // }
+        // axios.get(endpoint, config) //don;t need config with interceptors
+        axios.get(endpoint)
         .then(res => {
             this.setState({
                 users: res.data
@@ -55,4 +58,4 @@ class Users extends React.Component {
 
 }
 
-export default Users;
+export default requiresAuth(Users);
