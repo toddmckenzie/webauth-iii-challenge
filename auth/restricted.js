@@ -7,13 +7,12 @@ module.exports = (req, res, next) => {
     if (token){
         jwt.verify(token, secrets.jwtSecret, (err, decodeToken) =>{
             if (err) {
-                res.status(401).json(err)
+                res.status(401).json({ message: 'You shall not pass.'})
             } else {
-                console.log('herhehrehrhe')
                 next();
             }
         })
     } else {
-        res.status(400).json({ message: 'No token provided.'})
+        res.status(400).json({ message: 'You shall not pass.'})
     }
 }

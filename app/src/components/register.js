@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './components.css'
@@ -27,23 +28,33 @@ class Register extends React.Component {
 
     register = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/api/register', this.state)
+        const endpoint = 'http://localhost:4000/api/register';
+        axios.post(endpoint, this.state)
         .then(res => {
-            console.log(res)
+            this.setState({
+                username: '',
+                password: '',
+                department: ''
+            })
         })
         .catch(err => {
-            console.log(err)
+            console.log(err.reponse)
         })
     }   
 
     render() {
         return (
-            <form onSubmit={this.callLogin} className='form'>
-                <TextField id='username' label='Name'  className='textField' onChange={this.handleChanges} />
-                <TextField id='password' label='Password' className='textField' onChange={this.handleChanges} />
-                <TextField id='department' label='Department' className='textField' onChange={this.handleChanges} />
-                <Button onClick={this.register}>Register</Button>
-            </form>
+            <div>
+                <Link to='/login'>
+                    <Button>Login</Button>
+                </Link>
+                <form onSubmit={this.register} className='form'>
+                    <TextField id='username' label='Name'  className='textField' onChange={this.handleChanges} />
+                    <TextField id='password' label='Password' className='textField' onChange={this.handleChanges} type='password'/>
+                    <TextField id='department' label='Department' className='textField' onChange={this.handleChanges} />
+                    <Button onClick={this.register}>Register</Button>
+                </form>
+            </div>
         )
     }
 

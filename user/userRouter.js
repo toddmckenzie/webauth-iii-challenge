@@ -6,7 +6,7 @@ const restricted = require('../auth/restricted.js');
 
 router.get('/', restricted, (req, res) => {
     db('users')
-    .select('id', 'username', 'password')
+    .select('username', 'password', 'department')
     .then(users => {
         res.json(users)
     })

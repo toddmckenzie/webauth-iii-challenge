@@ -11,15 +11,20 @@ class Users extends React.Component {
     }
 
     componentDidMount() {
-        axios.get()
-        .then()
-        .catch()
+        const endpoint = 'http://localhost:4000/api/users'
+        axios.get(endpoint)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     logout = (e) => {
-        axios.get()
-        .then()
-        .catch()
+        e.preventDefault();
+        localStorage.removeItem('jwt');
+        this.history.props.push('/login')
     } 
    
 
