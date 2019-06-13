@@ -28,6 +28,7 @@ class Login extends React.Component {
         axios.post(endpoint, this.state)
         .then(res => {
             localStorage.setItem('jwt', res.data.token)
+            this.props.history.push('/users')
         })
         .catch(err => {
             console.log(Error)
@@ -40,6 +41,7 @@ class Login extends React.Component {
                 <Link to='/register'>
                     <Button>Register</Button>
                 </Link>
+                <h1 className='header'>Please Log In</h1>
                 <form onSubmit={this.callLogin} className='form'>
                     <TextField id='username' label='Name'  className='textField' onChange={this.handleChanges} />
                     <TextField id='password' label='Password' className='textField' onChange={this.handleChanges} type='password' />

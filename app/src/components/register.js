@@ -31,11 +31,7 @@ class Register extends React.Component {
         const endpoint = 'http://localhost:4000/api/register';
         axios.post(endpoint, this.state)
         .then(res => {
-            this.setState({
-                username: '',
-                password: '',
-                department: ''
-            })
+            this.props.history.push('/login')
         })
         .catch(err => {
             console.log(err.reponse)
